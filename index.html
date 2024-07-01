@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up | Your Inspire IT | ?block </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.postimg.cc/sx0XBJHz/b.jpg');
+            background-size: cover;
+            background-position: fixed;
+            text-align: center;
+            margin-top: 100px;
+        }
+        
+        form {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        h1 {
+            margin-top: 50px;
+            color: white;
+        }
+        
+        b {
+            color: #007bff;
+        }
+        
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px #007bff, 0 0 20px #007bff;
+            }
+            50% {
+                text-shadow: 0 0 20px #007bff, 0 0 30px #007bff;
+            }
+            100% {
+                text-shadow: 0 0 10px #007bff, 0 0 20px #007bff;
+            }
+        }
+        
+        b {
+            animation: glow 1.5s infinite alternate;
+        }
+        
+        img{
+            height: 200px;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+        
+        
+       .note{
+           margin: 0 auto;
+           width: 70%;
+           
+       }
+       
+      .note p{
+          color: #fff;
+          background:#0000008a;
+          padding: 10px;
+          border-radius: 5px;
+      }
+      
+      
+      
+     .part1{
+         margin: 0 auto;
+         width: 70%;
+     }
+     
+     
+     
+     
+         .alert {
+      padding: 20px;
+      background-color: #ff1f00;
+      color: white;
+      font-size: 20px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      width: calc(100% - 40px);
+      max-width: 500px;
+      box-shadow: 0 0 20px #ff1f00 , 0 0 40px #ff1f00  ;
+      text-align: center;
+    }
+
+    .closebtn {
+      margin-left: 15px;
+      color: white;      
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .closebtn:hover {
+      color: black;
+    }
+    </style>
+</head>
+<body>
+    <a href="#"><img src="https://i.postimg.cc/nVvDBPP5/Yi-logo.png"></a>
+    
+    <br><br>
+    <form action="#" method="post" onsubmit="return false;">
+        <input type="text" placeholder="User ID">
+        <br>
+        <input type="password" placeholder="Password">
+        <br>
+        <input type="text" placeholder="Passkey">
+        <br>
+        <input type="text" placeholder="Referral ID"><br>
+        <button onclick="showPopup()">Log In</button>
+    </form>
+   <div class="part1">
+
+</div>
+<div class="note">
+    <p>দুঃখীত, আপনি লগিন/সাইনআপ করতে পারবেন না, এখানে শুধু মাত্র এডমিন পেনেল, রেফারাল টিম লগিন করতে পারবেন ।  আপনি যদি আমাদের সাথে যুক্ত হয়ে অনলাইনে ইনকাম করতে চান, তাহলে এডমিন/রেফারাল টিমের কারও সাথে যোগাযোগ করুন অথবা যিনি আপনাকে লিংকটি দিয়েছেন, তিনি আপনাকে ফ্রীতে একাউন্ট করে দিবেন । ধন্যবাদ 🙃 </p>
+</div>
+
+
+
+
+
+  <div id="alert" class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+     <b>Warning ! </b><br><br>
+     নতুন একাউন্ট খুলতে রেফারাল টিমের মেম্বারকে আগে লগিং করতে হবে, তারপর নতুন একাউন্ট খুলার ফ্রম পেয়ে যাবেন ।  আর আপনি যদি রেফারাল টিম বা এডমিন পেনেলের কেউ না হয়ে থাকেন, দয়া করে নিচের লেখাগুলো পড়ুন  ! 
+  </div>
+
+
+    <script>
+        function showPopup() {
+            alert("Warning ! Access Denied. ");
+        }
+        
+        
+            window.onload = function() {
+      document.getElementById('alert').style.display = 'block';
+    };
+        
+    </script>
+</body>
+</html>
