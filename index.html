@@ -2,181 +2,244 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up | Your Inspire IT | ?block </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Your Inspire IT</title>
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@100..800&family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Megrim&family=Share:ital,wght@0,400;0,700;1,400;1,700&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+ <link rel="icon" href="https://i.postimg.cc/ZRc76Fqb/In-Shot-20241024-202136364.png" type="image/png">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-image: url('https://i.postimg.cc/sx0XBJHz/b.jpg');
-            background-size: cover;
-            background-position: fixed;
-            text-align: center;
-            margin-top: 100px;
+            font-family: "Sora", sans-serif;
+            background-color: #212121;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           
+            margin: 0;
         }
-        
-        form {
-            background-color: #fff;
-            border-radius: 8px;
+        .container {
+            background-color: #000;
             padding: 20px;
+            border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: inline-block;
-        }
-        
-        input[type="text"],
-        input[type="password"] {
             width: 100%;
+            max-width: 500px;
+            text-align: center;
+            margin: 25px 5% 0 5%;
+        }
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        .company-name {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #3bff00;
+        }
+        .subtitle {
+            font-size: 19px;
+            color: #00abab;
+            margin-bottom: 20px;
+        }
+        .login-form input {
+            width: 95%;
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            box-sizing: border-box;
         }
-        
-        button {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
+        .password-container {
+            position: relative;
+        }
+        .password-container input {
+            padding-right: 5px;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 25px;
+            top: 26%;
+           
+            cursor: pointer;
+            color: #666;
+        }
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3bff00;
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 0 30px #3bff00;
+            margin-top: 15px;
+          
+        }
+        .login-form button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .notice {
+            margin-top: 45px;
+            font-size: 16px;
+            color: #c8c8c8;
+        }
+        .loading {
+            display: none;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #3bff00;
+        }
+        .spinner {
+            border: 4px solid #fff;
+            border-top: 4px solid #3bff00;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            text-align: center;
+            height: 170px;
+           width: 200px;
+        }
+        .popup button {
+            padding: 8px 16px;
+            background-color: red;
+            color: #000;
             border: none;
             border-radius: 4px;
             cursor: pointer;
         }
-        
-        button:hover {
-            background-color: #0056b3;
+        .about-us {
+            margin-top: 30px;
+            text-align: left;
+        }
+        .about-us h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #3bff00;
+        }
+        .about-us p {
+            font-size: 17px;
+            color: #fff;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #888;
         }
         
-        h1 {
-            margin-top: 50px;
-            color: white;
+        a{
+            color: #fff;
         }
-        
-        b {
-            color: #007bff;
-        }
-        
-        @keyframes glow {
-            0% {
-                text-shadow: 0 0 10px #007bff, 0 0 20px #007bff;
-            }
-            50% {
-                text-shadow: 0 0 20px #007bff, 0 0 30px #007bff;
-            }
-            100% {
-                text-shadow: 0 0 10px #007bff, 0 0 20px #007bff;
-            }
-        }
-        
-        b {
-            animation: glow 1.5s infinite alternate;
-        }
-        
-        img{
-            height: 200px;
-            width: 200px;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-        }
-        
-        
-       .note{
-           margin: 0 auto;
-           width: 70%;
-           
-       }
-       
-      .note p{
-          color: #fff;
-          background:#0000008a;
-          padding: 10px;
-          border-radius: 5px;
-      }
-      
-      
-      
-     .part1{
-         margin: 0 auto;
-         width: 70%;
-     }
-     
-     
-     
-     
-         .alert {
-      padding: 20px;
-      background-color: #ff1f00;
-      color: white;
-      font-size: 20px;
-      margin-bottom: 15px;
-      border-radius: 10px;
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1000;
-      width: calc(100% - 40px);
-      max-width: 500px;
-      box-shadow: 0 0 20px #ff1f00 , 0 0 40px #ff1f00  ;
-      text-align: center;
-    }
-
-    .closebtn {
-      margin-left: 15px;
-      color: white;      
-      font-weight: bold;
-      float: right;
-      font-size: 22px;
-      line-height: 20px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .closebtn:hover {
-      color: black;
-    }
     </style>
 </head>
 <body>
-    <a href="#"><img src="https://i.postimg.cc/nVvDBPP5/Yi-logo.png"></a>
-    
-    <br><br>
-    <form action="#" method="post" onsubmit="return false;">
-        <input type="text" placeholder="User ID">
-        <br>
-        <input type="password" placeholder="Password">
-        <br>
-        <input type="text" placeholder="Passkey">
-        <br>
-        <input type="text" placeholder="Referral ID"><br>
-        <button onclick="showPopup()">Log In</button>
-    </form>
-   <div class="part1">
+    <div class="container">
+        <img src="https://i.postimg.cc/ZRc76Fqb/In-Shot-20241024-202136364.png" alt="Logo" class="logo">
+        <div class="company-name">Your Inspire IT</div>
+        <div class="subtitle">Make Your Inspire</div>
+        <form class="login-form" onsubmit="return validateForm()">
+            <input type="text" id="userId" placeholder="User ID" required>
+            <input type="text" id="referralId" placeholder="Referral ID" required>
+            <div class="password-container">
+                <input type="password" id="password" placeholder="Password" required>
+                <span class="toggle-password" onclick="togglePassword()">
+                    <i class="fas fa-eye"></i>
+                </span>
+            </div>
+            <input type="text" id="securityQuestion" placeholder="Passkey" required>
+            <button type="submit" id="loginButton">Login</button>
+        </form>
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+        <div class="notice">এখানে শুধু এডমিন প্যানেল, রেফারাল টিম লগইন করে নতুন একাউন্ট খুলতে পারবে!  তাই আপনি যদি নতুন একাউন্ট খুলতে চান, <a href="#">এখানে ক্লিক করুন ।</a> </div>
 
-</div>
-<div class="note">
-    <p>দুঃখীত, আপনি লগিন/সাইনআপ করতে পারবেন না, এখানে শুধু মাত্র এডমিন পেনেল, রেফারাল টিম লগিন করতে পারবেন ।  আপনি যদি আমাদের সাথে যুক্ত হয়ে অনলাইনে ইনকাম করতে চান, তাহলে এডমিন/রেফারাল টিমের কারও সাথে যোগাযোগ করুন অথবা যিনি আপনাকে লিংকটি দিয়েছেন, তিনি আপনাকে ফ্রীতে একাউন্ট করে দিবেন । ধন্যবাদ 🙃 </p>
-</div>
+        <!-- About Us Section -->
+        <div class="about-us">
+            <h2>About Us</h2>
+            <p>
+                We are a leading company dedicated to providing the best services to our customers. 
+                Our mission is to innovate and deliver solutions that make a difference.
+            </p>
+        </div>
 
+        <!-- Footer -->
+        <div class="footer">
+            &copy; 2022-2025 Your Inspire IT. All rights reserved.
+        </div>
+    </div>
 
-
-
-
-  <div id="alert" class="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-     <b>Warning ! </b><br><br>
-     নতুন একাউন্ট খুলতে রেফারাল টিমের মেম্বারকে আগে লগিং করতে হবে, তারপর নতুন একাউন্ট খুলার ফ্রম পেয়ে যাবেন ।  আর আপনি যদি রেফারাল টিম বা এডমিন পেনেলের কেউ না হয়ে থাকেন, দয়া করে নিচের লেখাগুলো পড়ুন  ! 
-  </div>
-
+    <!-- Popup -->
+    <div class="popup" id="popup">
+        <div style="margin-top: 40px;">Wrong ID</div>
+        <button onclick="closePopup()" style="margin-top: 40px;">Close</button>
+    </div>
 
     <script>
-        function showPopup() {
-            alert("Warning ! Access Denied. ");
+        function validateForm() {
+            const userId = document.getElementById('userId').value;
+            const referralId = document.getElementById('referralId').value;
+            const password = document.getElementById('password').value;
+            const securityQuestion = document.getElementById('securityQuestion').value;
+
+            if (userId && referralId && password && securityQuestion) {
+                document.getElementById('loading').style.display = 'block';
+                document.getElementById('loginButton').disabled = true;
+
+                setTimeout(() => {
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('popup').style.display = 'block';
+                }, 15000);
+
+                return false;
+            } else {
+                alert('Please fill in all fields.');
+                return false;
+            }
         }
-        
-        
-            window.onload = function() {
-      document.getElementById('alert').style.display = 'block';
-    };
-        
+
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.querySelector('.toggle-password i');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('loginButton').disabled = false;
+        }
     </script>
 </body>
 </html>
