@@ -3,225 +3,629 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup - Your Inspire IT</title>
+    <title>Signup - Your Inspire IT</title> <!-- Updated Title -->
     <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@100..800&family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Megrim&family=Share:ital,wght@0,400;0,700;1,400;1,700&family=Sora:wght@100..800&display=swap" rel="stylesheet">
- <link rel="icon" href="https://i.postimg.cc/ZRc76Fqb/In-Shot-20241024-202136364.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Fonts (Using Poppins from login theme) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" href="https://i.postimg.cc/ZRc76Fqb/In-Shot-20241024-202136364.png" type="image/png">
+
     <style>
+        /* --- Global Styles & Variables (From Login Theme) --- */
+        :root {
+            --primary-bg: #eff3ff; /* Light background */
+            --secondary-bg: #ffffff; /* White cards/sections */
+            --tertiary-bg: #f8fafc;  /* Slightly off-white */
+            --text-dark: #1e293b;    /* Dark text */
+            --text-light: #475569;   /* Medium text */
+            --text-lighter: #64748b; /* Light text */
+            --accent-color: #4f46e5; /* Primary accent (Indigo) */
+            --accent-hover: #4338ca; /* Darker accent */
+            --border-color: #e2e8f0; /* Light border */
+            --shadow-color: rgba(79, 70, 229, 0.1); /* Subtle shadow based on accent */
+            --success-color: #10b981; /* Green */
+            --warning-color: #f59e0b; /* Amber */
+            --error-color: #ef4444;   /* Red */
+            --error-bg: #fee2e2;      /* Light Red */
+            --error-text: #b91c1c;    /* Dark Red */
+            --cta-bg: linear-gradient(135deg, #4f46e5, #7c3aed); /* Gradient for CTA */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: "Sora", sans-serif;
-            background-color: #212121;
+            font-family: 'Poppins', sans-serif; /* Using Poppins */
+            background-color: var(--primary-bg);
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-size: 16px;
+            overflow-x: hidden;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main { flex: 1; }
+
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+
+        h1, h2, h3, h4 { font-weight: 600; color: var(--text-dark); margin-bottom: 0.8em; line-height: 1.3; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.4rem; }
+        h4 { font-size: 1.1rem; }
+
+        p { margin-bottom: 1em; color: var(--text-light); }
+        a { text-decoration: none; color: var(--accent-color); transition: color 0.3s ease; }
+        a:hover { color: var(--accent-hover); }
+        section { padding: 80px 0; overflow: hidden; } /* Added overflow hidden for animations */
+
+        .btn { display: inline-block; background-color: var(--accent-color); color: #fff; padding: 12px 28px; border-radius: 8px; font-weight: 500; font-size: 1rem; transition: background-color 0.3s ease, transform 0.2s ease; border: none; cursor: pointer; text-align: center; width: 100%; }
+        .btn:hover { background-color: var(--accent-hover); transform: translateY(-3px); }
+        .btn:disabled { background-color: #9ca3af; cursor: not-allowed; transform: none; } /* Adjusted disabled style */
+
+        /* --- Header/Navigation (From Login Theme) --- */
+        .main-header { background-color: var(--secondary-bg); padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .main-header .container { display: flex; justify-content: space-between; align-items: center; position: relative; }
+        .logo { font-size: 1.6rem; font-weight: 700; color: var(--accent-color); display: flex; align-items: center; gap: 8px; }
+        .logo img { height: 30px; /* Adjust logo size */ width: auto; }
+        .main-nav { display: flex; }
+        .main-nav a { margin-left: 25px; font-weight: 500; color: var(--text-dark); position: relative; padding-bottom: 5px; }
+        .main-nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
+        .main-nav a:hover::after, .main-nav a.active-nav::after { width: 100%; } /* Highlight active nav */
+        .main-nav a:hover, .main-nav a.active-nav { color: var(--accent-color); }
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; background: none; border: none; color: var(--text-dark); }
+
+        /* --- Signup Section Styles (Adapted from Login Theme) --- */
+        #signup-section {
+            display: flex;
             align-items: center;
-           
-            margin: 0;
+            justify-content: center;
+            padding: 60px 0; /* Reduced padding */
         }
-        .container {
-            background-color: #000;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .signup-container {
+            background-color: var(--secondary-bg);
+            padding: 40px;
+            border-radius: 12px; /* Slightly more rounded */
+            box-shadow: 0 15px 35px var(--shadow-color); /* Enhanced shadow */
+            max-width: 500px; /* Adjusted max-width */
             width: 100%;
-            max-width: 500px;
-            text-align: center;
-            margin: 25px 5% 0 5%;
+            text-align: center; /* Center heading */
+            animation: fadeInScaleUp 0.8s ease-out forwards;
         }
-        .logo {
-            width: 100px;
-            height: 100px;
-            margin-bottom: 10px;
+        .signup-container h2 {
+            font-size: 1.8rem; /* Adjusted H2 */
+            margin-bottom: 25px;
+            color: var(--text-dark);
         }
-        .company-name {
-            font-size: 30px;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #3bff00;
+
+        /* Form Styles (Adapted) */
+        .signup-form .form-group {
+            margin-bottom: 18px;
+            text-align: left; /* Align labels left */
         }
-        .subtitle {
-            font-size: 19px;
-            color: #00abab;
-            margin-bottom: 20px;
+        .signup-form label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-size: 0.95rem;
         }
-        .login-form input {
-            width: 95%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+        .signup-form input[type="text"],
+        .signup-form input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            color: var(--text-dark);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        .password-container {
-            position: relative;
+        .signup-form input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
         }
-        .password-container input {
-            padding-right: 5px;
-        }
+        /* Password Toggle Styles */
+        .password-container { position: relative; }
         .toggle-password {
             position: absolute;
-            right: 25px;
-            top: 26%;
-           
+            right: 15px; /* Adjust position */
+            top: 50%;
+            transform: translateY(-50%);
             cursor: pointer;
-            color: #666;
+            color: var(--text-lighter);
+            font-size: 1.1rem;
         }
-        .login-form button {
-            width: 100%;
-            padding: 10px;
-            background-color: #3bff00;
-            color: #000;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            box-shadow: 0 0 30px #3bff00;
-            margin-top: 15px;
-          
-        }
-        .login-form button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
+
+        /* Notice Text */
         .notice {
-            margin-top: 45px;
-            font-size: 16px;
-            color: #c8c8c8;
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            padding: 15px;
+            background-color: var(--tertiary-bg);
+            border-radius: 6px;
+            border-left: 4px solid var(--accent-color);
+            text-align: left; /* Align text left */
         }
-        .loading {
-            display: none;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #3bff00;
-        }
+        .notice a { font-weight: 500; }
+
+
+        /* --- Loading Spinner (Adapted) --- */
+        .loading { display: none; margin-top: 25px; text-align: center; }
         .spinner {
-            border: 4px solid #fff;
-            border-top: 4px solid #3bff00;
+            border: 4px solid var(--border-color);
+            border-top: 4px solid var(--accent-color); /* Use accent color */
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             animation: spin 1s linear infinite;
-            margin: 0 auto;
+            margin: 0 auto 10px auto; /* Add spacing */
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        .loading p { font-size: 0.95rem; color: var(--text-light); margin-bottom: 0; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* --- Popup (Adapted for Theme) --- */
         .popup {
             display: none;
             position: fixed;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 20px;
+            background-color: var(--secondary-bg);
+            padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            z-index: 1001;
             text-align: center;
-            height: 170px;
-           width: 200px;
+            min-width: 280px;
+            border-top: 4px solid var(--error-color); /* Error indicator */
         }
-        .popup button {
-            padding: 8px 16px;
-            background-color: red;
-            color: #000;
+        .popup p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+        .popup button { /* General button style */
+            padding: 10px 25px;
+            background-color: var(--error-color);
+            color: #fff;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            width: auto; /* Not full width */
         }
-        .about-us {
-            margin-top: 30px;
-            text-align: left;
+        .popup button:hover { background-color: #b91c1c; /* Darker Red */ }
+
+        /* --- Added Sections Styling --- */
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2.2rem; position: relative; display: inline-block; padding-bottom: 10px; }
+        .section-title h2::after { /* Underline effect */
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
         }
-        .about-us h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: #3bff00;
+        .section-title p { max-width: 600px; margin-left: auto; margin-right: auto; color: var(--text-light); }
+
+        /* Benefits Section */
+        #benefits { background-color: var(--tertiary-bg); }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .benefit-item {
+            background-color: var(--secondary-bg);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.6s ease-out backwards; /* Add animation */
         }
-        .about-us p {
-            font-size: 17px;
+        .benefit-item:hover { transform: translateY(-8px); box-shadow: 0 12px 25px var(--shadow-color); }
+        .benefit-item i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-color), #a855f7);
+             -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent;
+             background-clip: text;
+             text-fill-color: transparent;
+
+        }
+        .benefit-item h3 { font-size: 1.3rem; margin-bottom: 10px; }
+        .benefit-item p { font-size: 0.95rem; color: var(--text-light); }
+         /* Staggered animation for benefit items */
+        .benefit-item:nth-child(1) { animation-delay: 0.1s; }
+        .benefit-item:nth-child(2) { animation-delay: 0.2s; }
+        .benefit-item:nth-child(3) { animation-delay: 0.3s; }
+        /* Add more if needed */
+
+        /* FAQ Section */
+        #faq { background-color: var(--secondary-bg); }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item {
+            background-color: var(--tertiary-bg);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            overflow: hidden; /* Important for animation */
+             animation: fadeInUp 0.5s ease-out backwards;
+        }
+        .faq-item summary {
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Space between text and icon */
+            align-items: center; /* Center vertically */
+            padding: 18px 25px;
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none; /* Remove default marker */
+            color: var(--text-dark);
+            transition: background-color 0.3s ease;
+        }
+         .faq-item summary::-webkit-details-marker { display: none; } /* Hide marker on Chrome/Safari */
+         .faq-item summary::after { /* Custom arrow icon */
+            content: '\f078'; /* Font Awesome chevron-down */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            transition: transform 0.3s ease;
+            font-size: 0.9rem;
+            color: var(--text-light);
+         }
+        .faq-item details[open] summary { background-color: rgba(79, 70, 229, 0.05); color: var(--accent-color);}
+        .faq-item details[open] summary::after { transform: rotate(180deg); }
+        .faq-content {
+            padding: 0 25px 20px 25px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border-color);
+             animation: fadeIn 0.4s ease-in-out;
+        }
+         /* Staggered animation for FAQ items */
+        .faq-item:nth-child(1) { animation-delay: 0.1s; }
+        .faq-item:nth-child(2) { animation-delay: 0.2s; }
+        .faq-item:nth-child(3) { animation-delay: 0.3s; }
+        .faq-item:nth-child(4) { animation-delay: 0.4s; }
+
+        /* CTA Section */
+        #cta {
+            background: var(--cta-bg); /* Use gradient */
             color: #fff;
+            text-align: center;
+            padding: 80px 0;
+             animation: fadeIn 1s ease-out;
         }
-        .footer {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #888;
+        #cta h2 { color: #fff; font-size: 2.3rem; margin-bottom: 15px; }
+        #cta p { color: rgba(255, 255, 255, 0.85); max-width: 650px; margin: 0 auto 30px auto; font-size: 1.1rem; }
+        .btn-cta {
+            background-color: #fff;
+            color: var(--accent-color);
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px; /* Pill shape */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+            width: auto; /* Override default full width */
         }
-        
-        a{
-            color: #fff;
+        .btn-cta:hover { background-color: var(--secondary-bg); color: var(--accent-hover); transform: translateY(-4px) scale(1.03); }
+
+
+        /* --- Footer (From Login Theme) --- */
+        .main-footer { background-color: #1e293b; color: #cbd5e1; padding: 60px 0 20px 0; margin-top: auto; }
+        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; margin-bottom: 40px; }
+        .footer-col { flex: 1; min-width: 200px; margin-bottom: 20px; }
+        .footer-col h4 { color: #fff; margin-bottom: 20px; font-size: 1.1rem; font-weight: 600; position: relative; padding-bottom: 10px; }
+        .footer-col h4::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 2px; background-color: var(--accent-color); }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: #cbd5e1; transition: color 0.3s ease, padding-left 0.3s ease; }
+        .footer-col ul li a:hover { color: #fff; padding-left: 5px; }
+        .footer-socials a { display: inline-block; color: #fff; background-color: rgba(255, 255, 255, 0.15); width: 40px; height: 40px; line-height: 40px; border-radius: 50%; text-align: center; margin-right: 10px; font-size: 1rem; transition: background-color 0.3s ease, transform 0.3s ease; }
+        .footer-socials a:hover { background-color: var(--accent-color); transform: scale(1.1); }
+        .footer-bottom { border-top: 1px solid #334155; padding-top: 25px; text-align: center; font-size: 0.9rem; color: #94a3b8; }
+
+        /* --- Animations --- */
+        @keyframes fadeInScaleUp { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+
+        /* --- Responsive Design (Adapted from Login Theme) --- */
+        @media (max-width: 992px) {
+            /* Responsive Nav */
+            .menu-toggle { display: block; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); z-index: 1001;}
+            .main-nav {
+                display: none; flex-direction: column; position: absolute;
+                top: 100%; left: 0; width: 100%; background-color: var(--secondary-bg);
+                padding: 15px 0; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center;
+                animation: slideDown 0.3s ease-out;
+             }
+             .main-nav.active { display: flex; }
+             .main-nav a { margin: 10px 20px; padding: 8px 0; width: auto; }
+             .main-nav a::after { display: none; }
+             .main-nav a:hover { background-color: var(--primary-bg); }
+             @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         }
+        @media (max-width: 768px) {
+            h2 { font-size: 1.8rem; }
+            .section-title h2 { font-size: 1.9rem; }
+            section { padding: 60px 0; }
+            .footer-content { text-align: center; }
+            .footer-col { flex-basis: 100%; margin-bottom: 30px; align-items: center; }
+            .footer-col h4::after { left: 50%; transform: translateX(-50%); }
+            .footer-col ul li a:hover { padding-left: 0; }
+             #signup-section { padding: 40px 0; }
+             #cta h2 { font-size: 2rem; }
+        }
+        @media (max-width: 576px) {
+             .logo { font-size: 1.4rem; }
+             .logo img { height: 25px; }
+             .signup-container { padding: 30px 20px; }
+             .signup-container h2 { font-size: 1.6rem; }
+             .signup-form input[type="text"],
+             .signup-form input[type="password"] { padding: 10px 12px; font-size: 0.95rem;}
+             .btn { padding: 11px 22px; font-size: 0.95rem; }
+             .section-title h2 { font-size: 1.7rem; }
+             .benefit-item h3 { font-size: 1.2rem; }
+             .faq-item summary { padding: 15px 20px; }
+             .faq-content { padding: 0 20px 15px 20px; }
+             #cta h2 { font-size: 1.8rem; }
+             #cta p { font-size: 1rem; }
+             .btn-cta { padding: 12px 30px; font-size: 1rem; }
+        }
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="https://i.postimg.cc/ZRc76Fqb/In-Shot-20241024-202136364.png" alt="Logo" class="logo">
-        <div class="company-name">Your Inspire IT</div>
-        <div class="subtitle">Make Your Inspire</div>
-        <form class="login-form" onsubmit="return validateForm()">
-            <input type="text" id="userId" placeholder="User ID" required>
-            <input type="text" id="referralId" placeholder="Referral ID" required>
-            <div class="password-container">
-                <input type="password" id="password" placeholder="Password" required>
-                <span class="toggle-password" onclick="togglePassword()">
-                    <i class="fas fa-eye"></i>
-                </span>
+
+    <!-- Header (Adapted from Login Theme) -->
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="https://i.postimg.cc/ZRc76Fqb/In-Shot-20241024-202136364.png" alt="Logo">
+                Your Inspire IT
+            </a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav" id="main-nav">
+                <a href="index.html#features">Home</a>
+                <a href="index.html#how-it-works">About Us</a>
+                <a href="index.html#testimonials">Contact Us</a>
+                <a href="#">Report</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="auth.html">Login</a>
+                <a href="signup.html" class="active-nav">Sign Up</a> <!-- Highlight Signup -->
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Signup Section -->
+        <section id="signup-section">
+            <div class="signup-container">
+                <h2>Create Your Account</h2>
+                <form class="signup-form" id="signupForm" onsubmit="return validateAndSubmit()">
+                    <div class="form-group">
+                        <label for="userId">User ID</label>
+                        <input type="text" id="userId" placeholder="Choose a unique User ID" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="referralId">Referral ID</label>
+                        <input type="text" id="referralId" placeholder="Enter Referral ID (if any)" required>
+                    </div>
+                    <div class="form-group password-container">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Create a strong password" required>
+                        <span class="toggle-password" onclick="togglePassword()">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                         <label for="securityQuestion">Security Passkey</label>
+                        <input type="text" id="securityQuestion" placeholder="Enter a memorable passkey" required>
+                    </div>
+                    <button type="submit" class="btn" id="signupButton">Register Account</button> <!-- Changed Button Text -->
+                </form>
+
+                 <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Processing...</p> <!-- Changed Loading Text -->
+                 </div>
+
+                 <div class="notice">
+                     এই প্ল্যাটফর্মটি রেফারাল ভিত্তিক। অ্যাডমিন প্যানেল বা রেফারাল টিম দ্বারা অ্যাকাউন্ট তৈরি করা হয়। নিজে অ্যাকাউন্ট খুলতে, অনুগ্রহ করে <a href="#">সাপোর্ট টিমের সাথে যোগাযোগ করুন</a> অথবা আপনার রেফারারের সাহায্য নিন।
+                 </div>
+            </div> <!-- End of signup-container -->
+        </section>
+
+        <!-- Benefits Section -->
+        <section id="benefits">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Why Join Us?</h2>
+                    <p>Discover the advantages of becoming a part of the Your Inspire IT community.</p>
+                </div>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <h3>Earning Potential</h3>
+                        <p>Unlock various opportunities to earn through our unique platform features.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-users"></i>
+                        <h3>Community Support</h3>
+                        <p>Connect with like-minded individuals and get support from our active community.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Secure Platform</h3>
+                        <p>Your data and earnings are protected with our robust security measures.</p>
+                    </div>
+                     <div class="benefit-item">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Growth Tools</h3>
+                        <p>Access resources and tools designed to help you grow and succeed.</p>
+                    </div>
+                </div>
             </div>
-            <input type="text" id="securityQuestion" placeholder="Passkey" required>
-            <button type="submit" id="loginButton">Login</button>
-        </form>
-        <div class="loading" id="loading">
-            <div class="spinner"></div>
-            <p>Loading...</p>
-        </div>
-        <div class="notice">এখানে শুধু এডমিন প্যানেল, রেফারাল টিম লগইন করে নতুন একাউন্ট খুলতে পারবে!  তাই আপনি যদি নতুন একাউন্ট খুলতে চান, <a href="#">এখানে ক্লিক করুন ।</a> </div>
+        </section>
 
-        <!-- About Us Section -->
-        <div class="about-us">
-            <h2>About Us</h2>
-            <p>
-                We are a leading company dedicated to providing the best services to our customers. 
-                Our mission is to innovate and deliver solutions that make a difference.
-            </p>
-        </div>
+        <!-- FAQ Section -->
+        <section id="faq">
+            <div class="container faq-container">
+                 <div class="section-title">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Have questions? Find answers to common queries about signing up and getting started.</p>
+                </div>
+                 <div class="faq-item">
+                    <details>
+                        <summary>How do I create an account?</summary>
+                        <div class="faq-content">
+                            <p>Accounts on Your Inspire IT are typically created through a referral or by our admin team. Please contact the person who referred you or reach out to our support for assistance.</p>
+                        </div>
+                    </details>
+                </div>
+                <div class="faq-item">
+                    <details>
+                        <summary>Is there a fee to join?</summary>
+                         <div class="faq-content">
+                            <p>Information about any potential joining fees or requirements can be obtained from your referrer or our official support channels. Platform structures can vary.</p>
+                        </div>
+                    </details>
+                </div>
+                 <div class="faq-item">
+                     <details>
+                        <summary>What is a Referral ID?</summary>
+                         <div class="faq-content">
+                            <p>A Referral ID connects your account to the person who introduced you to the platform. It's often required during the signup process managed by the referral team.</p>
+                        </div>
+                     </details>
+                 </div>
+                 <div class="faq-item">
+                    <details>
+                        <summary>What is the Security Passkey?</summary>
+                        <div class="faq-content">
+                            <p>The Security Passkey is an extra layer of security for your account, often used for verification purposes. Choose something memorable but secure.</p>
+                        </div>
+                    </details>
+                 </div>
+            </div>
+        </section>
 
-        <!-- Footer -->
-        <div class="footer">
-            &copy; 2022-2025 Your Inspire IT. All rights reserved.
-        </div>
-    </div>
+         <!-- CTA Section -->
+        <section id="cta">
+             <div class="container">
+                <h2>Ready to Get Started?</h2>
+                <p>If you've been referred, contact your referrer or our support team to activate your account and begin your journey with Your Inspire IT!</p>
+                <a href="#" class="btn btn-cta">Contact Support</a> <!-- Link to contact page or method -->
+             </div>
+        </section>
 
-    <!-- Popup -->
+    </main>
+
+    <!-- Footer (Adapted from Login Theme) -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                 <div class="footer-col"><h4>About Us</h4><ul><li><a href="#">Our Mission</a></li><li><a href="#">How it Works</a></li><li><a href="#">Blog</a></li></ul></div>
+                 <div class="footer-col"><h4>Support</h4><ul><li><a href="#">Help Center / FAQ</a></li><li><a href="#">Contact Us</a></li><li><a href="#">Report</a></li><li><a href="#">Payment Info</a></li></ul></div>
+                 <div class="footer-col"><h4>Legal & Transparency</h4><ul><li><a href="#">Terms of Service</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Cookie Policy</a></li><li><a href="#">Earning Disclaimer</a></li></ul></div>
+                 <div class="footer-col footer-socials-container" > <!-- Keep socials, maybe hide if not needed -->
+                    <h4>Connect With Us</h4>
+                    <div class="footer-socials">
+                       <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                       <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                       <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                       <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                 </div>
+            </div>
+            <div class="footer-bottom">
+               © 2022-2025 Your Inspire IT. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Popup HTML (Adapted) -->
     <div class="popup" id="popup">
-        <div style="margin-top: 40px;">Wrong ID</div>
-        <button onclick="closePopup()" style="margin-top: 40px;">Close</button>
+        <p id="popupMessage">An error occurred.</p> <!-- Dynamic message -->
+        <button onclick="closePopup()">Close</button>
     </div>
 
     <script>
-        function validateForm() {
-            const userId = document.getElementById('userId').value;
-            const referralId = document.getElementById('referralId').value;
+        // --- Mobile Menu Toggle (From Login Theme) ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        if (menuToggle && mainNav) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+             // Close menu when a link is clicked (optional)
+             mainNav.querySelectorAll('a').forEach(link => {
+                 link.addEventListener('click', () => {
+                     if (mainNav.classList.contains('active')) {
+                          mainNav.classList.remove('active');
+                          menuToggle.querySelector('i').classList.remove('fa-times');
+                          menuToggle.querySelector('i').classList.add('fa-bars');
+                     }
+                 });
+              });
+        }
+
+        // --- Signup Form Logic (Adapted from your signup code) ---
+        const signupForm = document.getElementById('signupForm');
+        const loadingIndicator = document.getElementById('loading');
+        const signupButton = document.getElementById('signupButton');
+        const popup = document.getElementById('popup');
+        const popupMessage = document.getElementById('popupMessage');
+
+        function validateAndSubmit() {
+            // Basic validation (HTML5 'required' handles empty fields)
+            const userId = document.getElementById('userId').value.trim();
+            const referralId = document.getElementById('referralId').value.trim();
             const password = document.getElementById('password').value;
-            const securityQuestion = document.getElementById('securityQuestion').value;
+            const securityQuestion = document.getElementById('securityQuestion').value.trim();
 
             if (userId && referralId && password && securityQuestion) {
-                document.getElementById('loading').style.display = 'block';
-                document.getElementById('loginButton').disabled = true;
+                // Disable button and show loading spinner
+                signupButton.disabled = true;
+                loadingIndicator.style.display = 'block';
 
+                // --- !!! IMPORTANT: Replace this setTimeout with actual backend submission !!! ---
+                // This is just simulating a delay and showing an error popup.
+                // In a real application, you would send this data to your server
+                // using fetch() or XMLHttpRequest to create the account.
+                // The server would respond with success or failure.
                 setTimeout(() => {
-                    document.getElementById('loading').style.display = 'none';
-                    document.getElementById('popup').style.display = 'block';
-                }, 15000);
+                    loadingIndicator.style.display = 'none'; // Hide loading
+                    // Simulate an error (as per original code's behaviour)
+                    showPopup("Signup currently unavailable via form. Please contact support or your referrer.");
+                    // Keep button disabled on simulated error, or enable if needed
+                    // signupButton.disabled = false;
 
+                }, 2500); // Simulate 2.5 second delay
+
+                // Prevent default form submission (since we are simulating)
                 return false;
             } else {
-                alert('Please fill in all fields.');
-                return false;
+                 showPopup("Please fill in all required fields.");
+                 return false; // Prevent submission if fields are missing (redundant with 'required', but safe)
             }
         }
 
+        // --- Password Toggle Function ---
         function togglePassword() {
             const passwordInput = document.getElementById('password');
             const toggleIcon = document.querySelector('.toggle-password i');
@@ -236,10 +640,41 @@
             }
         }
 
-        function closePopup() {
-            document.getElementById('popup').style.display = 'none';
-            document.getElementById('loginButton').disabled = false;
+        // --- Popup Functions ---
+        function showPopup(message) {
+            popupMessage.textContent = message; // Set the message
+            popup.style.display = 'block';
         }
+
+        function closePopup() {
+            popup.style.display = 'none';
+             // Re-enable the button when the error popup is closed,
+             // so the user can try again or correct input.
+             signupButton.disabled = false;
+        }
+
+         // --- Simple Scroll Animations (Optional) ---
+         // Add 'animate-on-scroll' class to sections you want to animate
+         const animatedElements = document.querySelectorAll('.benefit-item, .faq-item, #cta');
+
+         const observer = new IntersectionObserver((entries) => {
+             entries.forEach(entry => {
+                 if (entry.isIntersecting) {
+                     // You might add a specific animation class here
+                     // For simplicity, relying on the CSS animation defined
+                     entry.target.style.animationPlayState = 'running'; // Start CSS animation
+                     observer.unobserve(entry.target); // Animate only once
+                 }
+             });
+         }, { threshold: 0.1 }); // Trigger when 10% visible
+
+         animatedElements.forEach(el => {
+            // Initially pause CSS animations that should trigger on scroll
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+         });
+
+
     </script>
 </body>
-</html>
+    </html>
