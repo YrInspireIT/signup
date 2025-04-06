@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Favicon -->
-    <link rel="icon" href="https://i.postimg.cc/ZRc76Fqb/In-Shot-20241024-202136364.png" type="image/png">
+ 
 
     <style>
         /* --- Global Styles & Variables (From Login Theme) --- */
@@ -132,7 +132,7 @@
         .toggle-password {
             position: absolute;
             right: 15px; /* Adjust position */
-            top: 50%;
+            top: 75%;
             transform: translateY(-50%);
             cursor: pointer;
             color: var(--text-lighter);
@@ -389,21 +389,21 @@
     <!-- Header (Adapted from Login Theme) -->
     <header class="main-header">
         <div class="container">
-            <a href="index.html" class="logo">
-                <img src="https://i.postimg.cc/ZRc76Fqb/In-Shot-20241024-202136364.png" alt="Logo">
+            <a href="https://yrinspireit.github.io/" class="logo">
+          
                 Your Inspire IT
             </a>
             <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
             <nav class="main-nav" id="main-nav">
-                <a href="index.html#features">Home</a>
-                <a href="index.html#how-it-works">About Us</a>
-                <a href="index.html#testimonials">Contact Us</a>
-                <a href="#">Report</a>
-                <a href="index.html#faq">FAQ</a>
-                <a href="auth.html">Login</a>
-                <a href="signup.html" class="active-nav">Sign Up</a> <!-- Highlight Signup -->
+                <a href="https://yrinspireit.github.io/">Home</a>
+                <a href="https://yrinspireit.github.io/about">About Us</a>
+                <a href="https://yrinspireit.github.io/contact">Contact Us</a>
+                <a href="https://yrinspireit.github.io/report">Report</a>
+                <a href="https://yrinspireit.github.io/faq">FAQ</a>
+                <a href="https://yrinspireit.github.io/login">Login</a>
+                <a href="https://yrinspireit.github.io/signup" class="active-nav">Sign Up</a> <!-- Highlight Signup -->
             </nav>
         </div>
     </header>
@@ -412,28 +412,28 @@
         <!-- Signup Section -->
         <section id="signup-section">
             <div class="signup-container">
-                <h2>Create Your Account</h2>
+                <h2>Login - Reffral Team</h2>
                 <form class="signup-form" id="signupForm" onsubmit="return validateAndSubmit()">
                     <div class="form-group">
                         <label for="userId">User ID</label>
-                        <input type="text" id="userId" placeholder="Choose a unique User ID" required>
+                        <input type="text" id="userId" placeholder="Your User ID" required>
                     </div>
                     <div class="form-group">
                         <label for="referralId">Referral ID</label>
-                        <input type="text" id="referralId" placeholder="Enter Referral ID (if any)" required>
+                        <input type="text" id="referralId" placeholder="Enter Referral ID" required >
                     </div>
                     <div class="form-group password-container">
                         <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="Create a strong password" required>
+                        <input type="password" id="password" placeholder="Your Access Password" required>
                         <span class="toggle-password" onclick="togglePassword()">
                             <i class="fas fa-eye"></i>
                         </span>
                     </div>
                     <div class="form-group">
                          <label for="securityQuestion">Security Passkey</label>
-                        <input type="text" id="securityQuestion" placeholder="Enter a memorable passkey" required>
+                        <input type="text" id="securityQuestion" placeholder="Enter your passkey" required>
                     </div>
-                    <button type="submit" class="btn" id="signupButton">Register Account</button> <!-- Changed Button Text -->
+                    <button type="submit" class="btn" id="signupButton">Login</button> <!-- Changed Button Text -->
                 </form>
 
                  <div class="loading" id="loading">
@@ -442,7 +442,7 @@
                  </div>
 
                  <div class="notice">
-                     এই প্ল্যাটফর্মটি রেফারাল ভিত্তিক। অ্যাডমিন প্যানেল বা রেফারাল টিম দ্বারা অ্যাকাউন্ট তৈরি করা হয়। নিজে অ্যাকাউন্ট খুলতে, অনুগ্রহ করে <a href="#">সাপোর্ট টিমের সাথে যোগাযোগ করুন</a> অথবা আপনার রেফারারের সাহায্য নিন।
+                     এই প্ল্যাটফর্মটি রেফারাল ভিত্তিক। অ্যাডমিন প্যানেল বা রেফারাল টিম দ্বারা অ্যাকাউন্ট তৈরি করা হয়। নিজে অ্যাকাউন্ট খুলতে, অনুগ্রহ করে <a href="https://yrinspireit.github.io/error">সাপোর্ট টিমের সাথে যোগাযোগ করুন</a> অথবা আপনার রেফারারের সাহায্য নিন।
                  </div>
             </div> <!-- End of signup-container -->
         </section>
@@ -526,7 +526,7 @@
              <div class="container">
                 <h2>Ready to Get Started?</h2>
                 <p>If you've been referred, contact your referrer or our support team to activate your account and begin your journey with Your Inspire IT!</p>
-                <a href="#" class="btn btn-cta">Contact Support</a> <!-- Link to contact page or method -->
+                <a href="https://yrinspireit.github.io/error" class="btn btn-cta">Contact Support</a> <!-- Link to contact page or method -->
              </div>
         </section>
 
@@ -536,10 +536,10 @@
     <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
-                 <div class="footer-col"><h4>About Us</h4><ul><li><a href="#">Our Mission</a></li><li><a href="#">How it Works</a></li><li><a href="#">Blog</a></li></ul></div>
-                 <div class="footer-col"><h4>Support</h4><ul><li><a href="#">Help Center / FAQ</a></li><li><a href="#">Contact Us</a></li><li><a href="#">Report</a></li><li><a href="#">Payment Info</a></li></ul></div>
-                 <div class="footer-col"><h4>Legal & Transparency</h4><ul><li><a href="#">Terms of Service</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Cookie Policy</a></li><li><a href="#">Earning Disclaimer</a></li></ul></div>
-                 <div class="footer-col footer-socials-container" > <!-- Keep socials, maybe hide if not needed -->
+                 <div class="footer-col"><h4>About Us</h4><ul><li><a href="https://yrinspireit.github.io/about">Our Mission</a></li><li><a href="https://yrinspireit.github.io/#how-it-works">How it Works</a></li><li><a href="#">Blog</a></li></ul></div>
+                 <div class="footer-col"><h4>Support</h4><ul><li><a href="https://yrinspireit.github.io/faq">Help Center / FAQ</a></li><li><a href="https://yrinspireit.github.io/contact">Contact Us</a></li><li><a href="https://yrinspireit.github.io/report">Report</a></li><li><a href="https://yrinspireit.github.io/error">Payment Info</a></li></ul></div>
+                 <div class="footer-col"><h4>Legal & Transparency</h4><ul><li><a href="https://yrinspireit.github.io/error">Terms of Service</a></li><li><a href="https://yrinspireit.github.io/error">Privacy Policy</a></li><li><a href="https://yrinspireit.github.io/error">Cookie Policy</a></li><li><a href="https://yrinspireit.github.io/error">Earning Disclaimer</a></li></ul></div>
+                 <div class="footer-col footer-socials-container" style="display: none;"> <!-- Keep socials, maybe hide if not needed -->
                     <h4>Connect With Us</h4>
                     <div class="footer-socials">
                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -611,7 +611,7 @@
                 setTimeout(() => {
                     loadingIndicator.style.display = 'none'; // Hide loading
                     // Simulate an error (as per original code's behaviour)
-                    showPopup("Signup currently unavailable via form. Please contact support or your referrer.");
+                    showPopup("Incorect User Info! Try Agin!");
                     // Keep button disabled on simulated error, or enable if needed
                     // signupButton.disabled = false;
 
@@ -673,6 +673,47 @@
             el.style.animationPlayState = 'paused';
             observer.observe(el);
          });
+
+
+
+
+
+    // --- প্রয়োজনীয়: কুকি পড়ার ফাংশন ---
+    // এই ফাংশনটি অবশ্যই এই স্ক্রিপ্টের আগে লোড হতে হবে অথবা এর মধ্যেই থাকতে হবে।
+    function getCookie(name) {
+        const nameEQ = name + "=";
+        const ca = document.cookie.split(';');
+        for(let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+
+    // --- রিডাইরেকশন লজিক ---
+    (function() {
+        const loginCookieName = 'loggedInUser'; // লগইনের সময় যে নামে কুকি সেট করেছিলেন
+        const redirectTargetPage = 'https://YrInspireIT.github.io/sorry';   // লগইন করা থাকলে এই পেজে রিডাইরেক্ট হবে
+
+        const isLoggedIn = getCookie(loginCookieName);
+        const currentPage = window.location.pathname; // বর্তমান পেজের পাথ (e.g., /profile.html)
+
+        // চেক করুন: কুকি আছে কিনা এবং বর্তমান পেজটিই টার্গেট পেজ কিনা (অসীম রিডাইরেক্ট এড়াতে)
+        if (isLoggedIn && isLoggedIn !== '' && currentPage.indexOf(redirectTargetPage) === -1) {
+            console.log(`User '${isLoggedIn}' is logged in. Redirecting from ${currentPage} to ${redirectTargetPage}`);
+            window.location.href = redirectTargetPage;
+        } else {
+            // যদি লগইন করা না থাকে অথবা ইউজার আগে থেকেই sl.html পেজে থাকে, তাহলে কিছু করার দরকার নেই।
+            if (!isLoggedIn || isLoggedIn === '') {
+                 console.log(`User not logged in on ${currentPage}. No redirect.`);
+            } else {
+                 console.log(`User already on ${redirectTargetPage}. No redirect needed.`);
+            }
+        }
+    })(); // ফাংশনটি অবিলম্বে কল করা হচ্ছে (Immediately Invoked Function Expression - IIFE)
+
+
 
 
     </script>
